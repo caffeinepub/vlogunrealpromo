@@ -2,139 +2,64 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-responsive-marketing-website-for-the-brand-name-vlogunrealpromo-that-targets-restaurants-hotels-and-similar-businesses-looking-for-ai-promotional-videos",
-      "featureTitle": "Create a responsive marketing website for the brand name “VlogunrealPromo” that targets Restaurants, Hotels, and similar businesses looking for AI promotional videos.",
+      "featureId": "feature-fix-portfolio-video-playback-by-making-youtube-url-parsing-robust-so-common-youtube-formats-including-youtu-be-links-youtube-com-watch-v-youtube-com-shorts-youtube-com-embed-and-links-with-extra-query-parameters-correctly-produce-an-embeddable-iframe-url-in-the-portfolio-viewer-modal",
+      "featureTitle": "Fix portfolio video playback by making YouTube URL parsing robust so common YouTube formats (including youtu.be links, youtube.com/watch?v=, youtube.com/shorts/, youtube.com/embed/, and links with extra query parameters) correctly produce an embeddable iframe URL in the portfolio viewer modal.",
       "files": [
-        "frontend/index.html",
-        "frontend/src/App.tsx"
+        "frontend/src/components/CreatedVideoViewer.tsx",
+        "frontend/src/utils/videoUrls.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-17"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-core-site-sections-pages-hero-services-what-you-get-industries-restaurants-hotels-etc-how-it-works-pricing-informational-only-examples-portfolio-gallery-faq-and-contact-request-cta",
-      "featureTitle": "Implement core site sections/pages: Hero, Services/What you get, Industries (Restaurants/Hotels/etc), How it works, Pricing (informational only), Examples/Portfolio gallery, FAQ, and Contact/Request CTA.",
+      "featureId": "feature-add-resilient-thumbnail-fallbacks-in-the-portfolio-grid-cards-and-viewer-fallback-state-so-broken-missing-thumbnail-urls-do-not-result-in-an-empty-blank-video-card-instead-show-a-visually-neutral-placeholder-and-keep-the-card-clickable",
+      "featureTitle": "Add resilient thumbnail fallbacks in the portfolio grid cards and viewer fallback state so broken/missing thumbnail URLs do not result in an empty/blank video card; instead show a visually neutral placeholder and keep the card clickable.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/MarketingHeader.tsx",
-        "frontend/src/components/Section.tsx"
+        "frontend/src/components/CreatedVideoViewer.tsx",
+        "frontend/src/components/CreatedVideosSection.tsx",
+        "frontend/src/components/VideoThumbnail.tsx",
+        "frontend/src/components/VideoUrlPreview.tsx",
+        "frontend/src/utils/videoUrls.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-18"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-request-a-promo-video-form-that-collects-lead-details-and-requirements-including-business-name-business-type-restaurant-hotel-other-contact-name-email-phone-whatsapp-location-city-country-website-social-links-desired-video-length-desired-style-mood-language-deadline-date-budget-range-and-free-text-notes",
-      "featureTitle": "Add a “Request a Promo Video” form that collects lead details and requirements, including: business name, business type (Restaurant/Hotel/Other), contact name, email, phone/WhatsApp, location (city/country), website/social links, desired video length, desired style/mood, language, deadline (date), budget range, and free-text notes.",
+      "featureId": "feature-improve-the-created-video-viewer-modal-fallback-ux-when-a-video-cannot-be-embedded-display-a-clear-english-message-explaining-that-the-video-cannot-be-embedded-and-provide-a-prominent-open-video-in-new-tab-action-that-always-works",
+      "featureTitle": "Improve the Created Video viewer modal fallback UX when a video cannot be embedded: display a clear English message explaining that the video cannot be embedded and provide a prominent \"Open Video in New Tab\" action that always works.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/RequestConfirmation.tsx",
-        "frontend/src/components/RequestPromoVideoForm.tsx"
+        "frontend/src/components/CreatedVideoViewer.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-connect-the-frontend-form-submission-to-the-backend-using-the-project-s-actor-integration-and-manage-submission-state-with-react-query-loading-success-error",
-      "featureTitle": "Connect the frontend form submission to the backend using the project’s actor integration and manage submission state with React Query (loading, success, error).",
-      "files": [
-        "frontend/src/components/RequestPromoVideoForm.tsx",
-        "frontend/src/hooks/useCreatePromoVideoRequest.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-an-examples-gallery-section-that-showcases-multiple-promotional-video-concepts-using-static-thumbnail-cards-title-short-description-and-image",
-      "featureTitle": "Add an “Examples” gallery section that showcases multiple promotional video concepts using static thumbnail cards (title, short description, and image).",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/ExamplesGallery.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-apply-a-coherent-distinctive-visual-theme-appropriate-for-a-premium-promo-video-studio-cinematic-dark-neutrals-with-warm-accents-avoid-blue-purple-modern-typography-and-consistent-spacing-components-across-all-sections",
-      "featureTitle": "Apply a coherent, distinctive visual theme appropriate for a premium promo-video studio: cinematic dark neutrals with warm accents (avoid blue/purple), modern typography, and consistent spacing/components across all sections.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-static-assets-integration-to-render-the-generated-brand-images-logo-wordmark-hero-examples-from-frontend-public-assets-generated-and-use-them-in-the-appropriate-sections-header-hero-examples",
-      "featureTitle": "Add a static assets integration to render the generated brand images (logo/wordmark/hero/examples) from frontend/public/assets/generated and use them in the appropriate sections (header/hero/examples).",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/ExamplesGallery.tsx",
-        "frontend/src/components/MarketingHeader.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
+        "REQ-19"
       ],
       "confidence": "high"
     }

@@ -1,29 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
 import { useActor } from './useActor';
-import type { PromoVideoRequest } from '../backend';
+
+// Note: This file is kept for backwards compatibility but the PromoVideoRequest
+// functionality has been removed from the backend. The request form is now
+// client-side only. This file can be removed if not needed elsewhere.
 
 export function useGetAllPromoVideoRequests() {
   const { actor, isFetching } = useActor();
 
-  return useQuery<PromoVideoRequest[]>({
+  return useQuery<never[]>({
     queryKey: ['promoVideoRequests'],
     queryFn: async () => {
-      if (!actor) return [];
-      return actor.getAllPromoVideoRequests();
+      // Backend no longer supports promo video requests
+      return [];
     },
-    enabled: !!actor && !isFetching,
+    enabled: false,
   });
 }
 
 export function useGetPromoVideoRequest(referenceId: bigint | null) {
   const { actor, isFetching } = useActor();
 
-  return useQuery<PromoVideoRequest | null>({
+  return useQuery<null>({
     queryKey: ['promoVideoRequest', referenceId?.toString()],
     queryFn: async () => {
-      if (!actor || !referenceId) return null;
-      return actor.getPromoVideoRequest(referenceId);
+      // Backend no longer supports promo video requests
+      return null;
     },
-    enabled: !!actor && !isFetching && !!referenceId,
+    enabled: false,
   });
 }

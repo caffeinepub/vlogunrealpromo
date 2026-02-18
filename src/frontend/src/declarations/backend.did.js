@@ -8,58 +8,98 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
 export const ReferenceId = IDL.Nat;
-export const PromoVideoRequest = IDL.Record({
+export const UserProfile = IDL.Record({ 'name' : IDL.Text });
+export const PromoVideo = IDL.Record({
   'url' : IDL.Text,
   'title' : IDL.Text,
+  'thumbnailUrl' : IDL.Text,
   'referenceId' : ReferenceId,
   'description' : IDL.Text,
 });
 
 export const idlService = IDL.Service({
-  'createPromoVideoRequest' : IDL.Func(
-      [ReferenceId, IDL.Text, IDL.Text, IDL.Text],
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'createPortfolioItem' : IDL.Func(
+      [ReferenceId, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
       [],
       [],
     ),
-  'getAllPromoVideoRequests' : IDL.Func(
-      [],
-      [IDL.Vec(PromoVideoRequest)],
-      ['query'],
-    ),
-  'getPromoVideoRequest' : IDL.Func(
+  'deletePortfolioItem' : IDL.Func([ReferenceId], [], []),
+  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+  'getPortfolio' : IDL.Func([], [IDL.Vec(PromoVideo)], ['query']),
+  'getPortfolioItem' : IDL.Func(
       [ReferenceId],
-      [PromoVideoRequest],
+      [IDL.Opt(PromoVideo)],
       ['query'],
+    ),
+  'getUserProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(UserProfile)],
+      ['query'],
+    ),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+  'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+  'updatePortfolioItem' : IDL.Func(
+      [ReferenceId, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
+      [],
+      [],
     ),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
   const ReferenceId = IDL.Nat;
-  const PromoVideoRequest = IDL.Record({
+  const UserProfile = IDL.Record({ 'name' : IDL.Text });
+  const PromoVideo = IDL.Record({
     'url' : IDL.Text,
     'title' : IDL.Text,
+    'thumbnailUrl' : IDL.Text,
     'referenceId' : ReferenceId,
     'description' : IDL.Text,
   });
   
   return IDL.Service({
-    'createPromoVideoRequest' : IDL.Func(
-        [ReferenceId, IDL.Text, IDL.Text, IDL.Text],
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'createPortfolioItem' : IDL.Func(
+        [ReferenceId, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
         [],
         [],
       ),
-    'getAllPromoVideoRequests' : IDL.Func(
-        [],
-        [IDL.Vec(PromoVideoRequest)],
-        ['query'],
-      ),
-    'getPromoVideoRequest' : IDL.Func(
+    'deletePortfolioItem' : IDL.Func([ReferenceId], [], []),
+    'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+    'getPortfolio' : IDL.Func([], [IDL.Vec(PromoVideo)], ['query']),
+    'getPortfolioItem' : IDL.Func(
         [ReferenceId],
-        [PromoVideoRequest],
+        [IDL.Opt(PromoVideo)],
         ['query'],
+      ),
+    'getUserProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(UserProfile)],
+        ['query'],
+      ),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+    'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+    'updatePortfolioItem' : IDL.Func(
+        [ReferenceId, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
+        [],
+        [],
       ),
   });
 };

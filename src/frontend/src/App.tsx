@@ -6,6 +6,7 @@ import { IndustriesSection } from './components/IndustriesSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
 import { PricingSection } from './components/PricingSection';
 import { ExamplesGallery } from './components/ExamplesGallery';
+import { CreatedVideosSection } from './components/CreatedVideosSection';
 import { FAQSection } from './components/FAQSection';
 import { RequestSection } from './components/RequestSection';
 import { Footer } from './components/Footer';
@@ -41,6 +42,7 @@ function App() {
           <HowItWorksSection />
           <PricingSection />
           <ExamplesGallery />
+          <CreatedVideosSection />
           <FAQSection />
           <RequestSection 
             ref={requestSectionRef}

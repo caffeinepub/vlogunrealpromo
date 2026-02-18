@@ -1,5 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useActor } from './useActor';
+import { useMutation } from '@tanstack/react-query';
 
 interface FormData {
   businessName: string;
@@ -19,43 +18,22 @@ interface FormData {
 }
 
 export function useCreatePromoVideoRequest() {
-  const { actor } = useActor();
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: async (formData: FormData): Promise<string> => {
-      if (!actor) {
-        throw new Error('Backend actor not initialized');
-      }
-
       // Generate a unique reference ID using timestamp
       const referenceId = BigInt(Date.now());
 
-      // Map form data to backend fields
-      const title = formData.businessName;
-      const url = formData.website || formData.email;
-      
-      // Concatenate all form fields into description
-      const description = `
-Contact: ${formData.contactName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Business Type: ${formData.businessType}
-Location: ${formData.city}, ${formData.country}
-Video Length: ${formData.videoLength}
-Style: ${formData.style}
-Language: ${formData.language}
-Deadline: ${formData.deadline}
-Budget: ${formData.budget}
-Notes: ${formData.notes}
-      `.trim();
+      // Simulate async operation (client-side only form)
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      await actor.createPromoVideoRequest(referenceId, title, description, url);
+      // In a real implementation, this could send data to an external service
+      // or email API, but for now it's just a client-side lead capture form
+      console.log('Form submitted (client-side only):', {
+        referenceId: referenceId.toString(),
+        ...formData
+      });
 
       return referenceId.toString();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['promoVideoRequests'] });
     },
   });
 }

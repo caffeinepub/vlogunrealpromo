@@ -1,11 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 9,
   "summary": "Website project named \"VlogunrealPromo\" to offer/generate AI promotional videos for brands such as restaurants, hotels, etc.",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Minimal cinematic logo mark, abstract camera/film motif, dark background variant (vlogunrealpromo-logo.dim_512x512.png)\n- Wide wordmark lockup “VlogunrealPromo” in a modern cinematic style (vlogunrealpromo-wordmark.dim_1200x300.png)\n- Cinematic hero background illustration with subtle film/grain lighting, no text (vlogunrealpromo-hero-bg.dim_1600x900.png)\n- Promotional video thumbnail image: Restaurant concept, cinematic food/ambient lighting (example-thumb-restaurant.dim_800x450.png)\n- Promotional video thumbnail image: Hotel concept, luxury interior lighting (example-thumb-hotel.dim_800x450.png)\n- Promotional video thumbnail image: Cafe concept, cozy warm tones (example-thumb-cafe.dim_800x450.png)",
+  "known_issues": [
+    "Portfolio/Created Videos section: video is not visible/displaying for the user (cannot see video on portfolio)."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-responsive-marketing-website-for-the-brand-name-vlogunrealpromo-that-targets-restaurants-hotels-and-similar-businesses-looking-for-ai-promotional-videos",
@@ -62,6 +63,78 @@
         "REQ-8"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-create-a-new-frontend-section-e-g-created-videos-or-portfolio-that-displays-the-created-videos-from-the-backend-as-a-responsive-grid-of-cards-using-the-existing-design-system-showing-thumbnail-title-and-short-description",
+      "title": "Create a new frontend section (e.g., \"Created Videos\" or \"Portfolio\") that displays the created videos from the backend as a responsive grid of cards using the existing design system, showing thumbnail, title, and short description.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-only-ui-to-add-and-delete-created-videos-from-the-portfolio-when-the-current-internet-identity-principal-is-recognized-as-admin-show-a-management-panel-with-an-add-created-video-form-and-per-item-delete-controls",
+      "title": "Add an admin-only UI to add and delete created videos from the portfolio: when the current Internet Identity principal is recognized as admin, show a management panel with an \"Add Created Video\" form and per-item delete controls.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-site-navigation-to-include-a-link-to-the-new-created-videos-portfolio-section-matching-the-existing-header-navigation-behavior-smooth-scroll-to-section",
+      "title": "Update site navigation to include a link to the new Created Videos/Portfolio section, matching the existing header navigation behavior (smooth scroll to section).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-admin-add-created-video-form-to-allow-adding-a-new-portfolio-video-without-manually-providing-a-thumbnail-url-when-the-video-url-is-a-supported-youtube-link-by-auto-deriving-a-thumbnail-url-from-the-youtube-video-id",
+      "title": "Update the admin \"Add Created Video\" form to allow adding a new portfolio video without manually providing a thumbnail URL when the Video URL is a supported YouTube link, by auto-deriving a thumbnail URL from the YouTube video ID.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-inline-preview-area-in-the-admin-add-created-video-form-so-the-admin-can-verify-the-pasted-video-url-and-derived-provided-thumbnail-before-creating-the-portfolio-item",
+      "title": "Add a simple inline \"preview\" area in the admin \"Add Created Video\" form so the admin can verify the pasted video URL and derived/provided thumbnail before creating the portfolio item.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-adjust-admin-form-validation-copy-to-clearly-explain-what-fields-are-required-and-when-the-thumbnail-is-auto-filled-for-youtube-urls-using-english-user-facing-text",
+      "title": "Adjust admin-form validation copy to clearly explain what fields are required and when the thumbnail is auto-filled for YouTube URLs, using English user-facing text.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-portfolio-video-playback-by-making-youtube-url-parsing-robust-so-common-youtube-formats-including-youtu-be-links-youtube-com-watch-v-youtube-com-shorts-youtube-com-embed-and-links-with-extra-query-parameters-correctly-produce-an-embeddable-iframe-url-in-the-portfolio-viewer-modal",
+      "title": "Fix portfolio video playback by making YouTube URL parsing robust so common YouTube formats (including youtu.be links, youtube.com/watch?v=, youtube.com/shorts/, youtube.com/embed/, and links with extra query parameters) correctly produce an embeddable iframe URL in the portfolio viewer modal.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-resilient-thumbnail-fallbacks-in-the-portfolio-grid-cards-and-viewer-fallback-state-so-broken-missing-thumbnail-urls-do-not-result-in-an-empty-blank-video-card-instead-show-a-visually-neutral-placeholder-and-keep-the-card-clickable",
+      "title": "Add resilient thumbnail fallbacks in the portfolio grid cards and viewer fallback state so broken/missing thumbnail URLs do not result in an empty/blank video card; instead show a visually neutral placeholder and keep the card clickable.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-created-video-viewer-modal-fallback-ux-when-a-video-cannot-be-embedded-display-a-clear-english-message-explaining-that-the-video-cannot-be-embedded-and-provide-a-prominent-open-video-in-new-tab-action-that-always-works",
+      "title": "Improve the Created Video viewer modal fallback UX when a video cannot be embedded: display a clear English message explaining that the video cannot be embedded and provide a prominent \"Open Video in New Tab\" action that always works.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -76,6 +149,28 @@
       "summary": "Persist promo-video requests in the Motoko backend canister with stable storage and expose an API to create a new request and fetch a request by its reference ID.",
       "reqIds": [
         "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add capability to upload/add created promotional videos to the website (e.g., portfolio/gallery) so the owner can showcase completed work",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Extend the Motoko backend canister to support storing and serving a list of completed/created promo videos (portfolio items), including fields for an ID, title, description, video URL, and thumbnail URL.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add an admin permission model for managing created videos using Internet Identity principals: only an admin principal can add/delete created videos; non-admin users can only view the created videos list.",
+      "reqIds": [
+        "REQ-10"
       ],
       "status": "pending"
     }

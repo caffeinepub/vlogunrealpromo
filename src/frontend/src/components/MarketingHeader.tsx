@@ -24,6 +24,7 @@ export function MarketingHeader({ onRequestClick }: MarketingHeaderProps) {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Examples', href: '#examples' },
+    { label: 'Portfolio', href: '#portfolio' },
     { label: 'FAQ', href: '#faq' }
   ];
 

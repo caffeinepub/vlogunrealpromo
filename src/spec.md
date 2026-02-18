@@ -1,15 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Build a responsive English-language marketing website for “VlogunrealPromo” and enable visitors (restaurants, hotels, and similar businesses) to submit AI promo-video requests and receive a reference ID.
+**Goal:** Fix portfolio video visibility by improving YouTube embed URL parsing, adding robust thumbnail fallbacks, and providing a clear viewer-modal fallback when embedding isn’t possible.
 
 **Planned changes:**
-- Create a responsive marketing site with sections: Hero, Services/What you get, Industries, How it works, Pricing (informational), Examples gallery, FAQ, and Contact/Request CTA.
-- Add a “Request a Promo Video” form with the specified lead/details fields and client-side validation.
-- Implement a single Motoko backend actor to persist requests in stable storage, generating a reference ID and createdAt timestamp; expose APIs to create and fetch by reference ID.
-- Connect frontend to backend actor for form submission using React Query with loading/success/error states and show confirmation + reference ID.
-- Add an Examples/Portfolio gallery with at least 6 responsive thumbnail cards (image, title, short description).
-- Apply a premium cinematic theme (dark neutrals with warm accents; avoid blue/purple) with consistent typography and components.
-- Integrate static generated images from `frontend/public/assets/generated` and use them in header/hero/examples.
+- Make YouTube URL parsing robust across common formats (watch, youtu.be, shorts, embed, and URLs with extra query parameters) to reliably generate an embeddable iframe URL in the portfolio viewer modal.
+- Add resilient thumbnail fallback handling in portfolio grid cards and in the viewer modal so broken/missing thumbnail URLs show a neutral placeholder and remain clickable.
+- Improve viewer modal fallback UX when a video cannot be embedded by showing an English explanation and a prominent “Open Video in New Tab” action that links to the original URL, while keeping a consistent aspect-video thumbnail/placeholder container.
 
-**User-visible outcome:** Visitors can browse a polished VlogunrealPromo marketing page, view example promo concepts, and submit a promo-video request via a form; after submission they see a confirmation and reference ID (and can later retrieve request details by ID).
+**User-visible outcome:** Portfolio video cards no longer appear blank when thumbnails fail, and clicking a portfolio item reliably opens a playable embedded YouTube video when possible; when embedding fails, users see a clear English message and can always open the video in a new tab.

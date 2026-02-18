@@ -1,8 +1,8 @@
 {
   "frontend/src/index.css": "Global styles with cinematic dark neutral palette featuring warm gold/coral accents, custom typography using Outfit and Inter fonts, and OKLCH color system for both light and dark modes.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with custom fonts (Outfit, Inter), warm color palette, custom shadows including glow effects, and fade-in animation for polished UI transitions.",
-  "frontend/src/App.tsx": "Main application component that orchestrates all marketing sections, manages request form state and confirmation display, and wraps the app with ThemeProvider for dark mode support.",
-  "frontend/src/components/MarketingHeader.tsx": "Responsive header with logo/wordmark, smooth-scrolling navigation to all sections, mobile menu toggle, and prominent CTA button that scrolls to the request form.",
+  "frontend/src/App.tsx": "Main application component orchestrating all marketing sections including the new Created Videos section, managing request form state, and wrapping the app with ThemeProvider.",
+  "frontend/src/components/MarketingHeader.tsx": "Responsive header with logo/wordmark, smooth-scrolling navigation including new Portfolio link, mobile menu toggle, and prominent CTA button.",
   "frontend/src/components/HeroSection.tsx": "Hero section with background image overlay, animated headline with gradient text, dual CTAs, and stats showcase displaying key metrics.",
   "frontend/src/components/Section.tsx": "Reusable section wrapper component with forwardRef support providing consistent spacing, container width, and anchor support for smooth navigation across all marketing sections.",
   "frontend/src/components/ServicesSection.tsx": "Services section displaying six feature cards with icons explaining what customers get (professional production, AI creation, fast turnaround, brand focus, custom styles, multi-language).",
@@ -15,6 +15,14 @@
   "frontend/src/components/RequestPromoVideoForm.tsx": "Comprehensive lead capture form with validation collecting business info, contact details, and video requirements across 14 fields, integrated with backend mutation hook.",
   "frontend/src/components/RequestConfirmation.tsx": "Success confirmation card displaying reference ID with copy-to-clipboard functionality and next steps information after successful form submission.",
   "frontend/src/components/Footer.tsx": "Footer with brand info, navigation links, social media icons, and attribution including dynamic year and UTM-tracked caffeine.ai link.",
-  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching all promo video requests and individual requests by reference ID from the backend actor.",
-  "frontend/src/hooks/useCreatePromoVideoRequest.ts": "React Query mutation hook that maps comprehensive form data to backend interface, generates timestamp-based reference IDs, and handles request submission with error handling."
+  "frontend/src/hooks/useQueries.ts": "Deprecated query hooks for promo video requests kept for backwards compatibility, now returns empty data as backend no longer supports this functionality.",
+  "frontend/src/hooks/useCreatePromoVideoRequest.ts": "React Query mutation hook for client-side only promo video request form submission that generates a reference ID without backend storage.",
+  "frontend/src/hooks/usePortfolio.ts": "React Query hooks for fetching portfolio items from the backend, including all portfolio items and individual items by reference ID.",
+  "frontend/src/hooks/usePortfolioAdmin.ts": "React Query hooks for admin operations including checking admin status, creating portfolio items, and deleting portfolio items with automatic cache invalidation.",
+  "frontend/src/components/CreatedVideoViewer.tsx": "Modal dialog component that displays portfolio videos using robust URL parsing for consistent embed support across all YouTube formats, with VideoThumbnail fallback and clear English messaging plus prominent external link button when embedding is not possible.",
+  "frontend/src/components/CreatedVideosAdminPanel.tsx": "Admin panel for managing portfolio items with auto-fill YouTube thumbnails, inline video preview, field-specific validation messages, and delete functionality.",
+  "frontend/src/components/CreatedVideosSection.tsx": "Main portfolio section displaying created videos in a responsive grid with loading/error/empty states, admin panel integration, click-to-view functionality, and resilient VideoThumbnail component for broken image handling.",
+  "frontend/src/utils/videoUrls.ts": "Utility functions for parsing YouTube and Vimeo URLs with robust support for all common YouTube formats (watch, youtu.be, shorts, embed), extracting video IDs, generating embeddable URLs, and providing ordered thumbnail fallback candidates for resilient image loading.",
+  "frontend/src/components/VideoUrlPreview.tsx": "Reusable inline preview component for admin panel that displays either an embedded video player or VideoThumbnail with external link label, using consistent fallback behavior without console errors.",
+  "frontend/src/components/VideoThumbnail.tsx": "Reusable thumbnail component that preserves aspect-video container, automatically cycles through YouTube thumbnail quality variants (maxres → hq → mq → default) on load failure, and displays a neutral placeholder icon when all candidates fail without console errors."
 }
