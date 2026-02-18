@@ -1,0 +1,20 @@
+{
+  "frontend/src/index.css": "Global styles with cinematic dark neutral palette featuring warm gold/coral accents, custom typography using Outfit and Inter fonts, and OKLCH color system for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom fonts (Outfit, Inter), warm color palette, custom shadows including glow effects, and fade-in animation for polished UI transitions.",
+  "frontend/src/App.tsx": "Main application component that orchestrates all marketing sections, manages request form state and confirmation display, and wraps the app with ThemeProvider for dark mode support.",
+  "frontend/src/components/MarketingHeader.tsx": "Responsive header with logo/wordmark, smooth-scrolling navigation to all sections, mobile menu toggle, and prominent CTA button that scrolls to the request form.",
+  "frontend/src/components/HeroSection.tsx": "Hero section with background image overlay, animated headline with gradient text, dual CTAs, and stats showcase displaying key metrics.",
+  "frontend/src/components/Section.tsx": "Reusable section wrapper component with forwardRef support providing consistent spacing, container width, and anchor support for smooth navigation across all marketing sections.",
+  "frontend/src/components/ServicesSection.tsx": "Services section displaying six feature cards with icons explaining what customers get (professional production, AI creation, fast turnaround, brand focus, custom styles, multi-language).",
+  "frontend/src/components/IndustriesSection.tsx": "Industries section showcasing six target business types (restaurants, hotels, cafes, retail, fitness, events) with icons and descriptions in a responsive grid.",
+  "frontend/src/components/HowItWorksSection.tsx": "Four-step process section with numbered icons and connecting lines explaining the workflow from vision sharing to final delivery.",
+  "frontend/src/components/PricingSection.tsx": "Three-tier pricing cards (Starter, Professional, Enterprise) with feature lists, highlighting the most popular plan, and CTA buttons scrolling to request form.",
+  "frontend/src/components/ExamplesGallery.tsx": "Portfolio gallery displaying six example video cards with thumbnails, titles, and descriptions in a responsive grid with hover effects.",
+  "frontend/src/components/FAQSection.tsx": "Accordion-based FAQ section with eight common questions and detailed answers about the service, process, and deliverables.",
+  "frontend/src/components/RequestSection.tsx": "Request section container that conditionally renders either the request form or confirmation message based on submission state, with forwarded ref for smooth scrolling.",
+  "frontend/src/components/RequestPromoVideoForm.tsx": "Comprehensive lead capture form with validation collecting business info, contact details, and video requirements across 14 fields, integrated with backend mutation hook.",
+  "frontend/src/components/RequestConfirmation.tsx": "Success confirmation card displaying reference ID with copy-to-clipboard functionality and next steps information after successful form submission.",
+  "frontend/src/components/Footer.tsx": "Footer with brand info, navigation links, social media icons, and attribution including dynamic year and UTM-tracked caffeine.ai link.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching all promo video requests and individual requests by reference ID from the backend actor.",
+  "frontend/src/hooks/useCreatePromoVideoRequest.ts": "React Query mutation hook that maps comprehensive form data to backend interface, generates timestamp-based reference IDs, and handles request submission with error handling."
+}

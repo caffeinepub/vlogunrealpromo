@@ -1,0 +1,81 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-18T07:16:13.153Z",
+  "summary": "Frontend marketing site structure (hero/services/industries/how-it-works/pricing/examples/FAQ/request) and visual theme + generated static assets usage appear implemented. However, the backend implementation does not meet the stable-storage + full-field persistence API requirements, and the request form/backend contract does not align with the specified data model and reference-ID behavior.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "Request form must collect all specified fields (business name, business type Restaurant/Hotel/Other, contact name, email, phone/WhatsApp, location city/country, website/social links, desired length, style/mood, language, deadline date, budget range, notes) and validate required fields; show confirmation with reference ID.",
+      "reason": "The form state includes many fields, but the provided diff is truncated before showing all rendered inputs; additionally, the business type options shown include many extra categories and it’s not clear the UI includes the exact required set (Restaurant/Hotel/Other) and all other specified inputs (e.g., explicit WhatsApp and website/social links).",
+      "evidence": [
+        "frontend/src/components/RequestPromoVideoForm.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Persist promo-video requests in Motoko stable storage with a type containing all form fields + createdAt timestamp + generated reference ID; create method returns generated reference ID; fetch by reference ID.",
+      "reason": "Backend stores only {referenceId,title,description,url} in a non-stable in-memory Map, has no createdAt, and does not store all form fields. The create method requires the caller to provide referenceId and returns async () instead of returning a generated reference ID. No stable variables or upgrade hooks are shown.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Frontend form submission must call backend create-request method and show loading/success/error states; on success show returned reference ID.",
+      "reason": "Frontend generates the reference ID client-side (timestamp) and passes it into the backend method; this does not match the requirement that the backend generates and returns the reference ID. This also implies the UI is not showing a backend-returned ID.",
+      "evidence": [
+        "frontend/src/hooks/useCreatePromoVideoRequest.ts",
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend API to list all promo video requests (getAllPromoVideoRequests) and frontend React Query hooks to fetch all requests.",
+      "reason": "BuildRequest only asked for create and fetch-by-reference-ID; an admin/listing API and corresponding queries were not requested (and non-goals mention no admin/CRM features).",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Internet Identity integration hooks/provider usage for actor creation.",
+      "reason": "Authentication was not requested for this build; constraints only state II is allowed if auth is later added. Adding II plumbing is extra scope relative to the requirements.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ExamplesGallery.tsx",
+    "frontend/src/components/FAQSection.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/HeroSection.tsx",
+    "frontend/src/components/HowItWorksSection.tsx",
+    "frontend/src/components/IndustriesSection.tsx",
+    "frontend/src/components/MarketingHeader.tsx",
+    "frontend/src/components/PricingSection.tsx",
+    "frontend/src/components/RequestConfirmation.tsx",
+    "frontend/src/components/RequestPromoVideoForm.tsx",
+    "frontend/src/components/RequestSection.tsx",
+    "frontend/src/components/Section.tsx",
+    "frontend/src/components/ServicesSection.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCreatePromoVideoRequest.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

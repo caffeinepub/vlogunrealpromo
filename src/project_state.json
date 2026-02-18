@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website project named \"VlogunrealPromo\" to offer/generate AI promotional videos for brands such as restaurants, hotels, etc.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimal cinematic logo mark, abstract camera/film motif, dark background variant (vlogunrealpromo-logo.dim_512x512.png)\n- Wide wordmark lockup “VlogunrealPromo” in a modern cinematic style (vlogunrealpromo-wordmark.dim_1200x300.png)\n- Cinematic hero background illustration with subtle film/grain lighting, no text (vlogunrealpromo-hero-bg.dim_1600x900.png)\n- Promotional video thumbnail image: Restaurant concept, cinematic food/ambient lighting (example-thumb-restaurant.dim_800x450.png)\n- Promotional video thumbnail image: Hotel concept, luxury interior lighting (example-thumb-hotel.dim_800x450.png)\n- Promotional video thumbnail image: Cafe concept, cozy warm tones (example-thumb-cafe.dim_800x450.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-marketing-website-for-the-brand-name-vlogunrealpromo-that-targets-restaurants-hotels-and-similar-businesses-looking-for-ai-promotional-videos",
+      "title": "Create a responsive marketing website for the brand name “VlogunrealPromo” that targets Restaurants, Hotels, and similar businesses looking for AI promotional videos.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-site-sections-pages-hero-services-what-you-get-industries-restaurants-hotels-etc-how-it-works-pricing-informational-only-examples-portfolio-gallery-faq-and-contact-request-cta",
+      "title": "Implement core site sections/pages: Hero, Services/What you get, Industries (Restaurants/Hotels/etc), How it works, Pricing (informational only), Examples/Portfolio gallery, FAQ, and Contact/Request CTA.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-request-a-promo-video-form-that-collects-lead-details-and-requirements-including-business-name-business-type-restaurant-hotel-other-contact-name-email-phone-whatsapp-location-city-country-website-social-links-desired-video-length-desired-style-mood-language-deadline-date-budget-range-and-free-text-notes",
+      "title": "Add a “Request a Promo Video” form that collects lead details and requirements, including: business name, business type (Restaurant/Hotel/Other), contact name, email, phone/WhatsApp, location (city/country), website/social links, desired video length, desired style/mood, language, deadline (date), budget range, and free-text notes.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-connect-the-frontend-form-submission-to-the-backend-using-the-project-s-actor-integration-and-manage-submission-state-with-react-query-loading-success-error",
+      "title": "Connect the frontend form submission to the backend using the project’s actor integration and manage submission state with React Query (loading, success, error).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-examples-gallery-section-that-showcases-multiple-promotional-video-concepts-using-static-thumbnail-cards-title-short-description-and-image",
+      "title": "Add an “Examples” gallery section that showcases multiple promotional video concepts using static thumbnail cards (title, short description, and image).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-distinctive-visual-theme-appropriate-for-a-premium-promo-video-studio-cinematic-dark-neutrals-with-warm-accents-avoid-blue-purple-modern-typography-and-consistent-spacing-components-across-all-sections",
+      "title": "Apply a coherent, distinctive visual theme appropriate for a premium promo-video studio: cinematic dark neutrals with warm accents (avoid blue/purple), modern typography, and consistent spacing/components across all sections.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-static-assets-integration-to-render-the-generated-brand-images-logo-wordmark-hero-examples-from-frontend-public-assets-generated-and-use-them-in-the-appropriate-sections-header-hero-examples",
+      "title": "Add a static assets integration to render the generated brand images (logo/wordmark/hero/examples) from frontend/public/assets/generated and use them in the appropriate sections (header/hero/examples).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create the \"VlogunrealPromo\" website for brands (restaurants, hotels, etc.) to get AI promotional videos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Persist promo-video requests in the Motoko backend canister with stable storage and expose an API to create a new request and fetch a request by its reference ID.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "VlogunrealPromo",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

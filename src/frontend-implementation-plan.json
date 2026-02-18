@@ -1,0 +1,216 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "VlogunrealPromo marketing site + promo-video request form (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a responsive English marketing website branded as “VlogunrealPromo” for AI promo videos targeting Restaurants/Hotels/etc.",
+      "acceptanceCriteria": [
+        "The site prominently displays the name “VlogunrealPromo”.",
+        "The site clearly communicates that the service is AI promotional videos for Restaurants/Hotels/etc.",
+        "All user-facing UI text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the main marketing page layout with header + sections that prominently display “VlogunrealPromo” and clearly describe the AI promo video service for Restaurants/Hotels/etc."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Ensure the document title/metadata aligns with the VlogunrealPromo brand and English-only presentation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement core marketing sections with navigation and clear CTAs to request a promo video.",
+      "acceptanceCriteria": [
+        "Navigation provides access (via sections or routes) to Services, Industries, How it works, Pricing, Examples, FAQ, and Contact/Request.",
+        "Each section has clear headings and concise explanatory copy in English.",
+        "A clear CTA (e.g., “Request a Promo Video”) is visible above the fold and near the bottom of the page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add and wire the required sections (Hero, Services/What you get, Industries, How it works, Pricing, Examples, FAQ, Contact/Request) using in-page anchors and a top navigation; include primary CTA above the fold and a secondary CTA near the bottom. Where appropriate, compose shadcn-ui components (e.g., Button, Card, Accordion) to keep section UI consistent. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/MarketingHeader.tsx",
+          "operation": "create",
+          "description": "Create a responsive header with brand wordmark/logo, in-page navigation links to all required sections, and a prominent “Request a Promo Video” CTA button using shadcn-ui Button. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Section.tsx",
+          "operation": "create",
+          "description": "Create a small reusable section wrapper (id/anchor support, consistent spacing, max-width container) to keep typography and spacing cohesive across all required sections."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a “Request a Promo Video” form with all required fields, client-side validation, and a success confirmation displaying a reference ID.",
+      "acceptanceCriteria": [
+        "Form includes all specified fields.",
+        "Client-side validation blocks submission when required fields are missing or invalid (e.g., email format).",
+        "On success, the UI shows a clear confirmation message and a submission/reference ID."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/RequestPromoVideoForm.tsx",
+          "operation": "create",
+          "description": "Implement the full lead form with fields: business name, business type (Restaurant/Hotel/Other), contact name, email, phone/WhatsApp, location (city/country), website/social links, desired video length, desired style/mood, language, deadline (date), budget range, and free-text notes. Add client-side validation (required fields, email format, basic phone/WhatsApp sanity). Compose shadcn-ui form building blocks (Input, Textarea, Select, Button, Card, etc.) without editing immutable ui paths. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/RequestConfirmation.tsx",
+          "operation": "create",
+          "description": "Create a confirmation panel shown on successful submission that clearly states the request was received and displays the reference ID (with copy-to-clipboard UX if appropriate). Compose shadcn-ui components (e.g., Card, Button) for styling consistency. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the RequestPromoVideoForm into the Hero CTA (scroll/focus to form) and into the Contact/Request section; render RequestConfirmation on success."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Connect form submission to the backend actor using React Query for loading/success/error states and display the reference ID on success.",
+      "acceptanceCriteria": [
+        "Submitting the form calls the backend create-request method.",
+        "While submitting, the UI shows a loading state and prevents duplicate submissions.",
+        "On error, the UI shows an English error message and allows retry.",
+        "On success, the returned reference ID is shown to the user."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCreatePromoVideoRequest.ts",
+          "operation": "create",
+          "description": "Add a React Query mutation hook that calls the project’s backend actor integration to create a promo-video request. Generate/track a reference ID in the UI flow (as required by the UI confirmation) and manage loading/error/success state for the form."
+        },
+        {
+          "path": "frontend/src/components/RequestPromoVideoForm.tsx",
+          "operation": "modify",
+          "description": "Use the React Query mutation from useCreatePromoVideoRequest to submit; disable submit while loading to prevent duplicates; show English error messaging with retry; on success show the reference ID via RequestConfirmation. Compose shadcn-ui Alert/Toast patterns if available in the project (without editing immutable ui paths). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/backend.d.ts",
+          "operation": "modify",
+          "description": "Align frontend types used by the form submission flow with the actual backend interface available to the frontend (type-safe actor calls), ensuring the submission wiring compiles cleanly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add an Examples/Portfolio gallery section with responsive thumbnail cards (image, title, short description) showing at least 6 examples.",
+      "acceptanceCriteria": [
+        "Examples section displays at least 6 example cards.",
+        "Cards are responsive (grid layout adjusts from mobile to desktop).",
+        "Each card includes an image, a title, and a 1–2 line description in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExamplesGallery.tsx",
+          "operation": "create",
+          "description": "Create a responsive Examples gallery (>=6 cards) using static thumbnail cards (image, title, 1–2 line description) and a grid that adapts from mobile to desktop. Compose shadcn-ui Card components for consistent visuals. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire ExamplesGallery into the required “Examples/Portfolio” section and ensure navigation can jump to it."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply a premium cinematic theme: dark neutrals + warm accents (no blue/purple as primary), modern typography, consistent spacing and components.",
+      "acceptanceCriteria": [
+        "Theme uses a consistent palette dominated by dark neutrals with warm accents (e.g., gold/coral) and does not rely on blue/purple as primary branding.",
+        "Typography hierarchy is consistent (headings, body, buttons).",
+        "Buttons, cards, and section layouts look cohesive across the site."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global CSS variables/Tailwind base styles for a cinematic dark neutral palette with warm accent colors (avoiding blue/purple as primary), consistent typography scale, and consistent section spacing defaults."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions as needed to support the cinematic palette/typography via existing CSS variable-based tokens and consistent spacing/typography utilities."
+        },
+        {
+          "path": "frontend/src/components/MarketingLayout.tsx",
+          "operation": "create",
+          "description": "Create a layout wrapper to enforce consistent background, container widths, section spacing, and typography styles across all sections; compose shadcn-ui primitives (e.g., Button/Card) for cohesive UI patterns. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the page with MarketingLayout and ensure all sections/buttons/cards use the shared theme and typography hierarchy."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Integrate generated brand images as static assets from frontend/public/assets/generated and use them in header/hero/examples.",
+      "acceptanceCriteria": [
+        "Generated images are referenced as static assets (not served via backend).",
+        "Header/hero includes the logo/wordmark.",
+        "Hero uses the hero background image.",
+        "Examples gallery uses the provided thumbnail images."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/vlogunrealpromo-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated static logo asset at the exact required path so it can be referenced directly by the frontend UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/vlogunrealpromo-wordmark.dim_1200x300.png",
+          "operation": "create",
+          "description": "Add the generated static wordmark asset at the exact required path so it can be referenced directly by the frontend UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/vlogunrealpromo-hero-bg.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static hero background asset at the exact required path so it can be referenced directly by the frontend UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/example-thumb-restaurant.dim_800x450.png",
+          "operation": "create",
+          "description": "Add the generated static example thumbnail asset at the exact required path so it can be referenced directly by the Examples gallery UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/example-thumb-hotel.dim_800x450.png",
+          "operation": "create",
+          "description": "Add the generated static example thumbnail asset at the exact required path so it can be referenced directly by the Examples gallery UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/example-thumb-cafe.dim_800x450.png",
+          "operation": "create",
+          "description": "Add the generated static example thumbnail asset at the exact required path so it can be referenced directly by the Examples gallery UI."
+        },
+        {
+          "path": "frontend/src/components/MarketingHeader.tsx",
+          "operation": "modify",
+          "description": "Reference and render the static generated brand images in the header/hero branding (use frontend/public/assets/generated/vlogunrealpromo-logo.dim_512x512.png and frontend/public/assets/generated/vlogunrealpromo-wordmark.dim_1200x300.png). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply the hero background using the static generated asset frontend/public/assets/generated/vlogunrealpromo-hero-bg.dim_1600x900.png and ensure it remains readable/accessible with overlays as needed."
+        },
+        {
+          "path": "frontend/src/components/ExamplesGallery.tsx",
+          "operation": "modify",
+          "description": "Use the provided generated thumbnails for the Examples cards (frontend/public/assets/generated/example-thumb-restaurant.dim_800x450.png, frontend/public/assets/generated/example-thumb-hotel.dim_800x450.png, frontend/public/assets/generated/example-thumb-cafe.dim_800x450.png), and reuse them to reach at least 6 total cards with distinct English titles/descriptions."
+        }
+      ]
+    }
+  ]
+}
